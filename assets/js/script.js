@@ -38,7 +38,7 @@ function navQ1(type) {
             }
 
             for (var i in q1.Q1) {
-                q1_list += '<a href="javascript:navQ2(\'' + q1.Q1[i] + '\');">';
+                q1_list += '<a href="javascript:navQ2(\'' + btoa(unescape(encodeURIComponent(q1.Q1[i]))) + '\');">';
                 q1_list += '   <div class="alert alert-success">';
                 q1_list += '       <i class="glyphicon glyphicon-play-circle close"></i>';
                 q1_list += '           <strong>' + q1.Q1[i] + '</strong>';
@@ -70,7 +70,7 @@ function navQ2(q1) {
             }
 
             for (var i in q2.Q2) {
-                q2_list += '<a href="javascript:navIdea(\'' + q2.Q2[i] + '\');">';
+                q2_list += '<a href="javascript:navIdea(\'' + btoa(unescape(encodeURIComponent(q2.Q2[i]))) + '\');">';
                 q2_list += '   <div class="alert alert-success">';
                 q2_list += '       <i class="glyphicon glyphicon-play-circle close"></i>';
                 q2_list += '           <strong>' + q2.Q2[i] + '</strong>';

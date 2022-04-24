@@ -38,7 +38,7 @@
             ));
             break;
         case 'q2':
-            $q1 = isset($_POST['q1']) ? $_POST['q1'] : '';
+            $q1 = isset($_POST['q1']) ? base64_decode($_POST['q1']) : '';
 
             $q2_text = array();
             $q2 = array();
@@ -57,7 +57,7 @@
             ));
             break;
         case 'idea':
-            $q2 = isset($_POST['q2']) ? $_POST['q2'] : '';
+            $q2 = isset($_POST['q2']) ? base64_decode($_POST['q2']) : '';
 
             $ideas = array();
 
