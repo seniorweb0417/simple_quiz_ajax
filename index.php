@@ -16,6 +16,10 @@
                 <h1 class="text-center">Quiz Types</h1>
                 <div id="type-list"></div>
             </div>
+            <div class="wrapper quiz-form">
+                <input type="hidden" id="navform-type" />
+                <form id="quiz-form"></form>
+            </div>
             <div class="wrapper q1-wrapper">
                 <h2></h2>
                 <div id="q1-list"></div>

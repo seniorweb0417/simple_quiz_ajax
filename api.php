@@ -20,17 +20,29 @@
 
             echo json_encode($types);
             break;
+        case 'form':
+            $result = $mysqli->query("SELECT DISTINCT F1 FROM questions_1");
+            $f1 = array();
+            while ($row = $result->fetch_assoc()) {
+                if ($row['F1'] == '') continue;
+                $f1[] = $row['F1'];
+            }
+
+            echo json_encode($f1);
+            break;
         case 'q1':
+            $type = isset($_POST['type']) ? $_POST['type'] : '';
+
             $q1_text = array();
             $q1 = array();
 
-            $result = $mysqli->query("SELECT Q1_text, Q1 from questions_1");
+            $result = $mysqli->query("SELECT Q1_text, Q1 FROM questions_1 WHERE Type=\"" . $type . "\"");
             while ($row = $result->fetch_assoc()) {
                 if (array_search($row['Q1_text'], $q1_text) === false) 
                     $q1_text[] = $row['Q1_text'];
                 if (array_search($row['Q1'], $q1) === false) 
                     $q1[] = $row['Q1'];
-           }
+            }
 
             echo json_encode(array(
                 'Q1_text' => $q1_text,
@@ -43,7 +55,7 @@
             $q2_text = array();
             $q2 = array();
 
-            $result = $mysqli->query("SELECT Q2_text, Q2 from questions_1 WHERE Q1=\"" . $q1 . "\"");
+            $result = $mysqli->query("SELECT Q2_text, Q2 FROM questions_1 WHERE Q1=\"" . $q1 . "\"");
             while ($row = $result->fetch_assoc()) {
                 if (array_search($row['Q2_text'], $q2_text) === false) 
                     $q2_text[] = $row['Q2_text'];
