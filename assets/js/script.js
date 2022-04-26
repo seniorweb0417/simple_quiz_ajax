@@ -23,12 +23,21 @@ function getTypes() {
             var types = JSON.parse(result);
             var html = '';
             for (var i in types) {
-                html += '<a href="javascript:navForm(\'' + types[i] + '\');">';
-                html += '   <div class="alert alert-success">';
-                html += '       <i class="glyphicon glyphicon-play-circle close"></i>';
-                html += '           <strong>' + types[i] + '</strong>';
-                html += '   </div>';
-                html += '</a>';
+                if (types[i] == 'Competit') {
+                    html += '<a href="javascript:navForm(\'' + types[i] + '\');">';
+                    html += '   <div class="alert alert-success">';
+                    html += '       <i class="glyphicon glyphicon-play-circle close"></i>';
+                    html += '           <strong>' + types[i] + '</strong>';
+                    html += '   </div>';
+                    html += '</a>';
+                } else {
+                    html += '<a href="javascript:navQ1(\'' + types[i] + '\');">';
+                    html += '   <div class="alert alert-success">';
+                    html += '       <i class="glyphicon glyphicon-play-circle close"></i>';
+                    html += '           <strong>' + types[i] + '</strong>';
+                    html += '   </div>';
+                    html += '</a>';
+                }
             }
 
             $('#type-list').html(html);
