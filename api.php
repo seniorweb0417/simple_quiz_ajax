@@ -21,14 +21,23 @@
             echo json_encode($types);
             break;
         case 'form':
-            $result = $mysqli->query("SELECT DISTINCT F1 FROM questions_1");
             $f1 = array();
+            $f1_text = array();
+
+            $result = $mysqli->query("SELECT F1, F1_text FROM questions_1");
             while ($row = $result->fetch_assoc()) {
                 if ($row['F1'] == '') continue;
-                $f1[] = $row['F1'];
+
+                if (array_search($row['F1_text'], $f1_text) === false) 
+                    $f1_text[] = $row['F1_text'];
+                if (array_search($row['F1'], $f1) === false) 
+                    $f1[] = $row['F1'];
             }
 
-            echo json_encode($f1);
+            echo json_encode(array(
+                'F1_text' => $f1_text,
+                'F1' => $f1
+            ));
             break;
         case 'q1':
             $type = isset($_POST['type']) ? $_POST['type'] : '';

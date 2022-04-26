@@ -44,9 +44,16 @@ function navForm(types) {
         data: {action: 'form'},
         success: function(result) {
             var f1 = JSON.parse(result);
+            var f1_text = '';
+            var f1_list = '';
             var html = '';
-            for (var i in f1) {
-                var tmp = f1[i].split('>');
+
+            for (var i in f1.F1_text) {
+                f1_text += f1.F1_text[i] + '<br>';
+            }
+
+            for (var i in f1.F1) {
+                var tmp = f1.F1[i].split('>');
                             
                 html += '<div class="form-group">';
                 html += '   <label>' + tmp[0].trim() + '</label>';
@@ -55,6 +62,7 @@ function navForm(types) {
             }
             html += '   <button type="submit" class="btn btn-primary">Submit</button>';
 
+            $('.quiz-form h2').html(f1_text);
             $('#quiz-form').html(html);
         }
     });

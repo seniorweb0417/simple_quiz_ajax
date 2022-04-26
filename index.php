@@ -18,6 +18,7 @@
             </div>
             <div class="wrapper quiz-form">
                 <input type="hidden" id="navform-type" />
+                <h2></h2>
                 <form id="quiz-form"></form>
             </div>
             <div class="wrapper q1-wrapper">
